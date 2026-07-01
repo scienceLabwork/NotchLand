@@ -1041,7 +1041,7 @@ struct FloatingNotchView: View {
         if isExpandedBranch(key) {
             if key == "expanded-onboarding" {
                 return CGSize(
-                    width: baseWidth + extra,
+                    width: OnboardingMetrics.notchSize.width + extra,
                     height: onboardingStage == .button
                         ? OnboardingMetrics.buttonHeight
                         : OnboardingMetrics.welcomeHeight

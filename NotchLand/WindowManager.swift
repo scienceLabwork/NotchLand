@@ -937,7 +937,7 @@ final class WindowManager: NSObject {
             }
 
             return CGSize(
-                width: baseWidth + FloatingNotchView.bareInvertedRadius * 2,
+                width: OnboardingMetrics.notchSize.width + FloatingNotchView.bareInvertedRadius * 2,
                 height: OnboardingMetrics.notchSize.height
             )
         }
