@@ -823,10 +823,10 @@ final class WindowManager: NSObject {
         // the regular feature footprint on the next frame update.
         let onboardingWidth: CGFloat = settings.hasCompletedOnboarding
             ? 0
-            : max(OnboardingMetrics.notchSize.width, OnboardingLockNotchMetrics.bodyWidth)
+            : max(OnboardingMetrics.expandedStepSize.width, OnboardingLockNotchMetrics.bodyWidth)
         let onboardingHeight: CGFloat = settings.hasCompletedOnboarding
             ? 0
-            : max(OnboardingMetrics.notchSize.height, OnboardingLockNotchMetrics.height)
+            : max(OnboardingMetrics.expandedStepSize.height, OnboardingLockNotchMetrics.height)
 
         let expandedWidth = max(
             CGFloat(settings.expandedWidth),
@@ -936,9 +936,14 @@ final class WindowManager: NSObject {
                 )
             }
 
+            // Uses the largest wizard-step size regardless of which step is
+            // actually showing — SwiftUI-side wizard state isn't mirrored
+            // here, and a hover hit-test that's briefly larger than the
+            // rendered welcome step has no visible effect (onboarding
+            // advances by explicit taps, not hover).
             return CGSize(
-                width: OnboardingMetrics.notchSize.width + FloatingNotchView.bareInvertedRadius * 2,
-                height: OnboardingMetrics.notchSize.height
+                width: OnboardingMetrics.expandedStepSize.width + FloatingNotchView.bareInvertedRadius * 2,
+                height: OnboardingMetrics.expandedStepSize.height
             )
         }
 
