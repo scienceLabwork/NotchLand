@@ -1,0 +1,11 @@
+# macOS
+.DS_Store
+
+# Xcode build output
+build/
+DerivedData/
+*.profraw
+
+# Xcode per-user state (never commit)
+*.xcuserstate
+**/xcuserdata/
