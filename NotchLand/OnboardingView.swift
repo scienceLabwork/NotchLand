@@ -36,12 +36,6 @@ enum OnboardingMetrics {
         case .features, .permissions: expandedStepSize
         }
     }
-
-    // Deprecated aliases for backwards compatibility during transition
-    @available(*, deprecated, message: "use size(for:)")
-    static let welcomeHeight: CGFloat = notchSize.height
-    @available(*, deprecated, message: "use size(for:)")
-    static let buttonHeight: CGFloat = notchSize.height
 }
 
 enum OnboardingLockNotchMetrics {
