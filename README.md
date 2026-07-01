@@ -27,7 +27,9 @@
   </div>
 -->
 
-<p align="center"><em>📸 Banner image coming soon — see <a href="#gallery">Gallery</a> below.</em></p>
+  <div align="center">
+    <img src="docs/images/banner.png" alt="NotchLand overlaying the MacBook notch" width="100%">
+  </div>
 
 ---
 
