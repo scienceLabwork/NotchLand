@@ -293,9 +293,11 @@ private struct OnboardingContentPreview: View {
     @State private var wizardStep: OnboardingWizardStep = .welcome
 
     var body: some View {
-        OnboardingView(wizardStep: $wizardStep, onGetStarted: {}, animateIntro: false)
-            .frame(width: OnboardingMetrics.notchSize.width, height: OnboardingMetrics.notchSize.height)
-            .background(Color.black)
+        NotchPreviewContainer {
+            OnboardingView(wizardStep: $wizardStep, onGetStarted: {}, animateIntro: false)
+                .frame(width: OnboardingMetrics.notchSize.width, height: OnboardingMetrics.notchSize.height)
+                .background(Color.black)
+        }
     }
 }
 
