@@ -13,7 +13,8 @@
   [![Platform](https://img.shields.io/badge/platform-macOS%2026.3%2B-lightgrey.svg)](#requirements)
   [![Made with Swift](https://img.shields.io/badge/Swift-SwiftUI%20%2B%20AppKit-orange.svg)](https://developer.apple.com/swift/)
   [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
-  [![Version](https://img.shields.io/badge/version-1.0-green.svg)](#)
+  [![Version](https://img.shields.io/badge/version-1.1-green.svg)](#)
+  ![Repo views](https://komarev.com/ghpvc/?username=notchland-repo-views&label=Repo+views&color=0e75b6&style=flat)
 
 </div>
 
@@ -36,6 +37,7 @@
 ## Contents
 
 - [What it does](#what-it-does)
+- [Features](#features)
 - [Gallery](#gallery)
 - [Requirements](#requirements)
 - [Build & run](#build--run)
@@ -52,20 +54,35 @@ NotchLand runs as an accessory app (no Dock icon) and overlays a floating panel 
 where your MacBook's notch sits. It stays out of the way until something happens worth
 showing — then it expands, animates, and collapses back.
 
-### Features
-
-| Feature | Description |
-|---|---|
-| **Now Playing** | Live media controls and artwork for whatever's playing. |
-| **AirDrop** | Drag a shareable file near the notch — the drop zone only opens for content AirDrop can actually accept, and lights up blue to confirm the drop. |
-| **System HUDs** | Clean, Apple-style overlays for volume and brightness. |
-| **Battery alerts** | Charging and low-battery notices in the notch. |
-| **Focus alerts** | A heads-up when your Focus mode changes. |
-| **Calendar & countdown** | Next-event peek and a countdown chip for what's coming up. |
-| **Lock / unlock showcase** | A padlock animation on lock and a "welcome back" card on unlock, with away-time, battery, and your next event. |
-
 > Designed for a MacBook with a display notch — NotchLand renders a floating panel where
 > the notch lives.
+
+---
+
+## Features
+
+<div align="center">
+  <img src="docs/images/banner-gallery.png" alt="NotchLand overlaying the MacBook notch" width="100%">
+</div>
+
+**Now Playing.** Live media controls and artwork for whatever's playing, right in the notch.
+
+**AirDrop.** Drag a shareable file near the notch and a drop zone opens — only for content
+AirDrop can actually accept — and confirms the drop.
+
+**System HUDs.** Clean, Apple-style overlays for volume and brightness.
+
+**Battery alerts.** Charging and low-battery notices surface in the notch.
+
+**Focus alerts.** A heads-up whenever your Focus mode changes.
+
+**Calendar and countdown.** A next-event peek and a countdown chip for what's coming up.
+
+**Lock and unlock showcase.** A padlock animation on lock and a "welcome back" card on
+unlock, with away-time, battery, and your next event.
+
+**Guided onboarding.** A first-launch walkthrough introduces the features and requests
+Calendar and Accessibility permissions step by step, both skippable.
 
 ---
 
@@ -87,9 +104,8 @@ showing — then it expands, animates, and collapses back.
   </p>
 -->
 
-  <div align="center">
-    <img src="docs/images/banner-gallery.png" alt="NotchLand overlaying the MacBook notch" width="100%">
-  </div>
+_More screenshots & demo GIFs coming soon — contributions welcome! Drop images into
+`docs/images/` and wire them into this section._
 
 ---
 
