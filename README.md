@@ -5,10 +5,9 @@
 
   ### Bring your MacBook's notch to life.
 
-  NotchLand turns the dead space around the MacBook display notch into a living surface —
+  NotchLand transforms the area around the MacBook display notch into an interactive surface —
   media controls, system HUDs, AirDrop, live activities, calendar peeks, and more. A native
-  **SwiftUI + AppKit** menu-bar app, inspired by [Alcove](https://tryalcove.com) and built
-  in the open.
+  **SwiftUI + AppKit** menu-bar app built in the open.
 
   [![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
   [![Platform](https://img.shields.io/badge/platform-macOS%2026.3%2B-lightgrey.svg)](#requirements)
@@ -108,8 +107,8 @@ are resolved through Xcode (Sparkle, Lottie).
 
 ```bash
 # Clone
-git clone https://github.com/scienceLabwork/LiveNotch.git
-cd LiveNotch
+git clone https://github.com/scienceLabwork/NotchLand.git
+cd NotchLand
 
 # Build (Debug) from the command line
 xcodebuild -project NotchLand.xcodeproj -scheme NotchLand -configuration Debug build
@@ -191,8 +190,6 @@ It bundles:
 
 ## Acknowledgments
 
-- [Alcove](https://tryalcove.com) — the original inspiration for turning the notch into a
-  useful surface instead of dead space.
 - [Sparkle](https://sparkle-project.org) and [Lottie](https://airbnb.io/lottie/) for the
   open-source foundations this app builds on.
 - Everyone who files an issue, opens a PR, or just gives the notch a try. 🙌

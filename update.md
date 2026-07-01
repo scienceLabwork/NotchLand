@@ -50,7 +50,7 @@ signature the app accepts, so a hijacked feed cannot push a malicious build.
 - **`NotchLand/Info.plist`** carries the feed config:
   | Key | Value |
   |---|---|
-  | `SUFeedURL` | `https://github.com/scienceLabwork/LiveNotch/releases/latest/download/appcast.xml` |
+  | `SUFeedURL` | `https://github.com/scienceLabwork/NotchLand/releases/latest/download/appcast.xml` |
   | `SUPublicEDKey` | `eWaZJZRPV3WMJvDk+8knSLRQqvluAsyZtzbi12lQ9Ww=` |
   | `SUEnableAutomaticChecks` | `true` |
 - Auto-check has a user-facing toggle (`autoUpdateCheckEnabled`).
@@ -113,7 +113,7 @@ ditto -c -k --sequesterRsrc --keepParent NotchLand.app ~/NotchLand-releases/Notc
 
 # Signs each build with your Keychain private key and writes appcast.xml
 generate_appcast ~/NotchLand-releases \
-  --download-url-prefix "https://github.com/scienceLabwork/LiveNotch/releases/latest/download/"
+  --download-url-prefix "https://github.com/scienceLabwork/NotchLand/releases/latest/download/"
 ```
 
 `generate_appcast` writes `~/NotchLand-releases/appcast.xml` with the correct file size and

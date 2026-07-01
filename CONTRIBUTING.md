@@ -6,8 +6,8 @@ contributions of all sizes are welcome — bug reports, fixes, features, and doc
 ## Getting set up
 
 ```bash
-git clone https://github.com/scienceLabwork/LiveNotch.git
-cd LiveNotch
+git clone https://github.com/scienceLabwork/NotchLand.git
+cd NotchLand
 open NotchLand.xcodeproj
 ```
 
