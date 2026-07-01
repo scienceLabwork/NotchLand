@@ -4,10 +4,10 @@
 <dict>
 	<!-- Sparkle update feed. The public key below pairs with a private key in
 	     the developer's login keychain (generated via Sparkle's generate_keys).
-	     Remaining launch step: build appcast.xml with `generate_appcast` and
-	     host it at the SUFeedURL below (e.g. attach to a GitHub Release). -->
+	     appcast.xml is generated per release with `generate_appcast` and
+	     attached to the matching GitHub Release. -->
 	<key>SUFeedURL</key>
-	<string>https://github.com/scienceLabwork/LiveNotch/releases/latest/download/appcast.xml</string>
+	<string>https://github.com/scienceLabwork/NotchLand/releases/latest/download/appcast.xml</string>
 	<key>SUPublicEDKey</key>
 	<string>eWaZJZRPV3WMJvDk+8knSLRQqvluAsyZtzbi12lQ9Ww=</string>
 	<key>SUEnableAutomaticChecks</key>
