@@ -89,8 +89,9 @@ showing — then it expands, animates, and collapses back.
   </p>
 -->
 
-_Screenshots & demo GIFs coming soon — contributions welcome! Drop images into
-`docs/images/` and wire them into this section._
+  <div align="center">
+    <img src="docs/images/banner-gallery.png" alt="NotchLand overlaying the MacBook notch" width="100%">
+  </div>
 
 ---
 
