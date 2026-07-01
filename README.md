@@ -54,17 +54,17 @@ showing — then it expands, animates, and collapses back.
 
 ### Features
 
-| | Feature | Description |
-|---|---|---|
-| 🎵 | **Now Playing** | Live media controls and artwork for whatever's playing. |
-| 📡 | **AirDrop** | Drag a shareable file near the notch — the drop zone only opens for content AirDrop can actually accept, and lights up blue to confirm the drop. |
-| 🎚️ | **System HUDs** | Clean, Apple-style overlays for volume and brightness. |
-| 🔋 | **Battery alerts** | Charging and low-battery notices in the notch. |
-| 🎯 | **Focus alerts** | A heads-up when your Focus mode changes. |
-| 📅 | **Calendar & countdown** | Next-event peek and a countdown chip for what's coming up. |
-| 🔒 | **Lock / unlock showcase** | A padlock animation on lock and a "welcome back" card on unlock, with away-time, battery, and your next event. |
-| 🔄 | **Auto-updates** | Built-in [Sparkle](https://sparkle-project.org) updater. |
-| ⚙️ | **Settings companion** | A full settings window with a live preview of the notch. |
+| Feature | Description |
+|---|---|
+| **Now Playing** | Live media controls and artwork for whatever's playing. |
+| **AirDrop** | Drag a shareable file near the notch — the drop zone only opens for content AirDrop can actually accept, and lights up blue to confirm the drop. |
+| **System HUDs** | Clean, Apple-style overlays for volume and brightness. |
+| **Battery alerts** | Charging and low-battery notices in the notch. |
+| **Focus alerts** | A heads-up when your Focus mode changes. |
+| **Calendar & countdown** | Next-event peek and a countdown chip for what's coming up. |
+| **Lock / unlock showcase** | A padlock animation on lock and a "welcome back" card on unlock, with away-time, battery, and your next event. |
+| **Auto-updates** | Built-in [Sparkle](https://sparkle-project.org) updater. |
+| **Settings companion** | A full settings window with a live preview of the notch. |
 
 > Designed for a MacBook with a display notch — NotchLand renders a floating panel where
 > the notch lives.
