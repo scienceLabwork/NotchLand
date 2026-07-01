@@ -139,6 +139,7 @@ struct FloatingNotchView: View {
     /// hard-cutting when the phase ends.
     @State private var calendarTransitionActive = false
     @State private var onboardingStage: OnboardingStage = .locked
+    @State private var onboardingWizardStep: OnboardingWizardStep = .welcome
     @State private var borderReveal: CGFloat = 0
     /// First-launch choreography: notch starts collapsed, then drives the same
     /// expanded state used by normal interactions so onboarding grows out of
@@ -229,6 +230,7 @@ struct FloatingNotchView: View {
             renderedFocusPresentation = nil
             renderedScreenLockPresentation = nil
             onboardingStage = .locked
+            onboardingWizardStep = .welcome
             appState.resetToCollapsed()
             didRevealOnboarding = false
             isNotchPhaseAnimating = false
@@ -849,7 +851,7 @@ struct FloatingNotchView: View {
         case "expanded-bare":
             CalendarNotchView()
         case "expanded-onboarding":
-            OnboardingView {
+            OnboardingView(wizardStep: $onboardingWizardStep) {
                 settings.hasCompletedOnboarding = true
                 appState.collapse()
             } onWelcomeAnimationFinished: {
@@ -1040,12 +1042,8 @@ struct FloatingNotchView: View {
 
         if isExpandedBranch(key) {
             if key == "expanded-onboarding" {
-                return CGSize(
-                    width: OnboardingMetrics.notchSize.width + extra,
-                    height: onboardingStage == .button
-                        ? OnboardingMetrics.buttonHeight
-                        : OnboardingMetrics.welcomeHeight
-                )
+                let stepSize = OnboardingMetrics.size(for: onboardingWizardStep)
+                return CGSize(width: stepSize.width + extra, height: stepSize.height)
             }
             if key == "expanded-event-detail" {
                 return CGSize(

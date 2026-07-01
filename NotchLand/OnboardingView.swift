@@ -79,61 +79,42 @@ struct OnboardingLockNotchView: View {
 }
 
 struct OnboardingView: View {
+    @Binding var wizardStep: OnboardingWizardStep
     let onGetStarted: () -> Void
     let onWelcomeAnimationFinished: () -> Void
     let animateIntro: Bool
 
     @State private var showHero = false
-    @State private var showTitle = false
-    @State private var showButton = false
+    @State private var showNext = false
 
     init(
+        wizardStep: Binding<OnboardingWizardStep>,
         onGetStarted: @escaping () -> Void,
         onWelcomeAnimationFinished: @escaping () -> Void = {},
         animateIntro: Bool = true
     ) {
+        self._wizardStep = wizardStep
         self.onGetStarted = onGetStarted
         self.onWelcomeAnimationFinished = onWelcomeAnimationFinished
         self.animateIntro = animateIntro
         _showHero = State(initialValue: !animateIntro)
-        _showTitle = State(initialValue: !animateIntro)
-        _showButton = State(initialValue: !animateIntro)
+        _showNext = State(initialValue: !animateIntro)
     }
 
     var body: some View {
-        VStack(spacing: 8) {
-            OnboardingHeroAnimation()
-                .frame(maxWidth: .infinity, maxHeight: 64)
-                .revealOnboardingItem(showHero, offset: -4, scale: 0.72)
+        VStack(spacing: 10) {
+            stepContent
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
 
-            Button(action: onGetStarted) {
-                Text("GET STARTED")
-                    .font(.system(size: 12, weight: .semibold, design: .rounded))
-                    .tracking(1.2)
-                    .foregroundStyle(Color.black)
-                    .frame(maxWidth: .infinity, maxHeight: 32)
-                    .background(
-                        RoundedRectangle(cornerRadius: 10, style: .continuous)
-                            .fill(Color(red: 0.36, green: 0.86, blue: 0.45))
-                    )
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 10, style: .continuous)
-                            .strokeBorder(Color.white.opacity(0.18), lineWidth: 0.5)
-                    )
-                    .shadow(color: Color.green.opacity(0.35), radius: 10, x: 0, y: 4)
-            }
-            .buttonStyle(.plain)
-            .disabled(!showButton)
-            .revealOnboardingItem(showButton, offset: 8, scale: 0.9)
+            footer
         }
-        .padding(.horizontal, 24)
-        .padding(.top, 18)
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .padding(.horizontal, wizardStep == .welcome ? 16 : 20)
+        .padding(.top, wizardStep == .welcome ? 10 : 16)
+        .padding(.bottom, 12)
         .task {
             guard animateIntro else {
                 showHero = true
-                showTitle = true
-                showButton = true
+                showNext = true
                 onWelcomeAnimationFinished()
                 return
             }
@@ -142,16 +123,88 @@ struct OnboardingView: View {
         .onDisappear {
             guard animateIntro else { return }
             showHero = false
-            showTitle = false
-            showButton = false
+            showNext = false
+        }
+    }
+
+    @ViewBuilder
+    private var stepContent: some View {
+        switch wizardStep {
+        case .welcome:
+            OnboardingHeroAnimation()
+                .frame(maxWidth: .infinity, maxHeight: 108)
+                .revealOnboardingItem(showHero, offset: -4, scale: 0.72)
+        case .features:
+            OnboardingFeaturesStepView()
+        case .permissions:
+            OnboardingPermissionsStepView(onFinish: onGetStarted)
+        }
+    }
+
+    @ViewBuilder
+    private var footer: some View {
+        HStack(spacing: 12) {
+            if wizardStep != .welcome {
+                Button(action: goBack) {
+                    Image(systemName: "chevron.left")
+                        .font(.system(size: 11, weight: .semibold))
+                        .foregroundStyle(.white.opacity(0.7))
+                        .frame(width: 28, height: 28)
+                        .background(Circle().fill(Color.white.opacity(0.1)))
+                }
+                .buttonStyle(.plain)
+            }
+
+            HStack(spacing: 6) {
+                ForEach(OnboardingWizardStep.allCases, id: \.self) { step in
+                    Circle()
+                        .fill(step == wizardStep ? Color.white : Color.white.opacity(0.25))
+                        .frame(width: 6, height: 6)
+                }
+            }
+            .frame(maxWidth: .infinity)
+
+            if wizardStep != .permissions {
+                Button(action: goNext) {
+                    Text("NEXT")
+                        .font(.system(size: 11, weight: .semibold, design: .rounded))
+                        .tracking(1)
+                        .foregroundStyle(Color.black)
+                        .padding(.horizontal, 16)
+                        .frame(height: 28)
+                        .background(Capsule(style: .continuous).fill(Color(red: 0.36, green: 0.86, blue: 0.45)))
+                }
+                .buttonStyle(.plain)
+                .opacity(wizardStep == .welcome && !showNext ? 0 : 1)
+                .disabled(wizardStep == .welcome && !showNext)
+            }
+        }
+    }
+
+    private func goNext() {
+        withAnimation(.easeInOut(duration: 0.22)) {
+            switch wizardStep {
+            case .welcome: wizardStep = .features
+            case .features: wizardStep = .permissions
+            case .permissions: break
+            }
+        }
+    }
+
+    private func goBack() {
+        withAnimation(.easeInOut(duration: 0.22)) {
+            switch wizardStep {
+            case .welcome: break
+            case .features: wizardStep = .welcome
+            case .permissions: wizardStep = .features
+            }
         }
     }
 
     @MainActor
     private func runIntroSequence() async {
         showHero = false
-        showTitle = false
-        showButton = false
+        showNext = false
 
         try? await Task.sleep(for: .milliseconds(90))
         guard !Task.isCancelled else { return }
@@ -159,16 +212,10 @@ struct OnboardingView: View {
             showHero = true
         }
 
-        try? await Task.sleep(for: .milliseconds(250))
-        guard !Task.isCancelled else { return }
-        withAnimation(.spring(response: 0.42, dampingFraction: 0.86, blendDuration: 0)) {
-            showTitle = true
-        }
-
-        try? await Task.sleep(for: .milliseconds(360))
+        try? await Task.sleep(for: .milliseconds(450))
         guard !Task.isCancelled else { return }
         withAnimation(.spring(response: 0.44, dampingFraction: 0.82, blendDuration: 0)) {
-            showButton = true
+            showNext = true
         }
         onWelcomeAnimationFinished()
     }
@@ -201,10 +248,12 @@ private extension View {
 }
 
 private struct OnboardingNotchPreview: View {
+    @State private var previewStep: OnboardingWizardStep = .welcome
+
     private let invertedRadius = FloatingNotchView.expandedInvertedRadius
-    private let bodySize = OnboardingMetrics.notchSize
 
     var body: some View {
+        let bodySize = OnboardingMetrics.size(for: previewStep)
         let size = CGSize(
             width: bodySize.width + invertedRadius * 2,
             height: bodySize.height
@@ -218,18 +267,35 @@ private struct OnboardingNotchPreview: View {
             Color(red: 0.11, green: 0.11, blue: 0.12)
                 .ignoresSafeArea()
 
-            ZStack(alignment: .bottom) {
-                shape.fill(Color.black)
-                    .frame(width: size.width, height: size.height)
+            NotchPreviewContainer {
+                ZStack(alignment: .bottom) {
+                    shape.fill(Color.black)
+                        .frame(width: size.width, height: size.height)
 
-                OnboardingView(onGetStarted: {}, animateIntro: false)
+                    OnboardingView(
+                        wizardStep: $previewStep,
+                        onGetStarted: {},
+                        animateIntro: false
+                    )
                     .frame(width: bodySize.width, height: bodySize.height)
+                }
+                .clipShape(shape)
+                .shadow(color: Color.black.opacity(0.42), radius: 18, x: 0, y: 8)
+                .padding(.top, 18)
             }
-            .clipShape(shape)
-            .shadow(color: Color.black.opacity(0.42), radius: 18, x: 0, y: 8)
-            .padding(.top, 18)
+            .animation(.easeInOut(duration: 0.22), value: previewStep)
         }
-        .frame(width: 430, height: 236)
+        .frame(width: 520, height: 320)
+    }
+}
+
+private struct OnboardingContentPreview: View {
+    @State private var wizardStep: OnboardingWizardStep = .welcome
+
+    var body: some View {
+        OnboardingView(wizardStep: $wizardStep, onGetStarted: {}, animateIntro: false)
+            .frame(width: OnboardingMetrics.notchSize.width, height: OnboardingMetrics.notchSize.height)
+            .background(Color.black)
     }
 }
 
@@ -276,9 +342,7 @@ private struct OnboardingLockPreview: View {
 }
 
 #Preview("Onboarding Content") {
-    OnboardingView(onGetStarted: {}, animateIntro: false)
-        .frame(width: OnboardingMetrics.notchSize.width, height: OnboardingMetrics.notchSize.height)
-        .background(Color.black)
+    OnboardingContentPreview()
 }
 
 #Preview("Onboarding Locked") {
