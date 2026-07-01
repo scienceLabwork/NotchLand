@@ -14,12 +14,33 @@
 import Lottie
 import SwiftUI
 
+enum OnboardingWizardStep: CaseIterable, Hashable {
+    case welcome
+    case features
+    case permissions
+}
+
 enum OnboardingMetrics {
-    /// Inner body width × total height of the expanded notch when onboarding
-    /// is showing. Width excludes the inverted-corner ears; height includes
-    /// the full top-to-bottom envelope.
+    /// Inner body width × total height of the expanded notch during the
+    /// welcome step. Width excludes the inverted-corner ears; height
+    /// includes the full top-to-bottom envelope.
     static let notchSize = CGSize(width: 318, height: 176)
+
+    /// Card size for the features/permissions wizard steps — bigger than
+    /// the welcome step to fit icons, copy, and navigation chrome.
+    static let expandedStepSize = CGSize(width: 460, height: 260)
+
+    static func size(for step: OnboardingWizardStep) -> CGSize {
+        switch step {
+        case .welcome: notchSize
+        case .features, .permissions: expandedStepSize
+        }
+    }
+
+    // Deprecated aliases for backwards compatibility during transition
+    @available(*, deprecated, message: "use size(for:)")
     static let welcomeHeight: CGFloat = notchSize.height
+    @available(*, deprecated, message: "use size(for:)")
     static let buttonHeight: CGFloat = notchSize.height
 }
 
