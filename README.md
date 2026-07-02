@@ -5,9 +5,11 @@
 
   ### Bring your MacBook's notch to life.
 
-  NotchLand transforms the area around the MacBook display notch into an interactive surface —
-  media controls, system HUDs, AirDrop, live activities, calendar peeks, and more. A native
-  **SwiftUI + AppKit** menu-bar app built in the open.
+  NotchLand lives in your notch, not your menu bar. It stays anchored there across every
+  desktop and Space, moving with the same fluid, spring-loaded animations Apple uses for its
+  own system UI — so it feels like a feature macOS shipped, not an app you installed. Media
+  controls, system HUDs, AirDrop, live activities, calendar peeks, and more, all in one place.
+  A native **SwiftUI + AppKit** menu-bar app built in the open.
 
   [![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
   [![Platform](https://img.shields.io/badge/platform-macOS%2026.3%2B-lightgrey.svg)](#requirements)
@@ -54,6 +56,12 @@ NotchLand runs as an accessory app (no Dock icon) and overlays a floating panel 
 where your MacBook's notch sits. It stays out of the way until something happens worth
 showing — then it expands, animates, and collapses back.
 
+**It sticks to the notch, not the menu bar.** Switch desktops, move between Spaces, go
+full-screen — NotchLand stays anchored to the notch on every one of them, with the same
+fluid, spring-loaded animations Apple uses for its own system UI. That's the main thing
+NotchLand does differently: it feels like a feature built into macOS, not a third-party
+app running alongside it.
+
 > Designed for a MacBook with a display notch — NotchLand renders a floating panel where
 > the notch lives.
 
@@ -63,6 +71,7 @@ showing — then it expands, animates, and collapses back.
 
 | Feature | Description |
 |---|---|
+| **Notch-native, not menu-bar** | Anchored to the notch across every desktop and Space, with fluid, Apple-style animations — feels like a built-in macOS feature, not a third-party app. |
 | **Now Playing** | Live media controls and artwork for whatever's playing, right in the notch. |
 | **AirDrop** | Drag a shareable file near the notch and a drop zone opens — only for content AirDrop can actually accept — and confirms the drop. |
 | **System HUDs** | Clean, Apple-style overlays for volume and brightness. |
