@@ -10,7 +10,12 @@
   own system UI — so it feels like a feature macOS shipped, not an app you installed. Media
   controls, system HUDs, AirDrop, live activities, calendar peeks, and more, all in one place.
   A native **SwiftUI + AppKit** menu-bar app built in the open.
-
+<br><br>
+  <a href="https://rudrashah.in/notchland">
+    <img src="https://img.shields.io/badge/Download-0A84FF?style=for-the-badge&logo=apple&logoColor=white" alt="Download">
+  </a>
+  <br><br>
+  
   [![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
   [![Platform](https://img.shields.io/badge/platform-macOS%2026.3%2B-lightgrey.svg)](#requirements)
   [![Made with Swift](https://img.shields.io/badge/Swift-SwiftUI%20%2B%20AppKit-orange.svg)](https://developer.apple.com/swift/)
