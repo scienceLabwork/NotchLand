@@ -61,48 +61,24 @@ showing — then it expands, animates, and collapses back.
 
 ## Features
 
-<div align="center">
-  <img src="docs/images/banner-gallery.png" alt="NotchLand overlaying the MacBook notch" width="100%">
-</div>
-
-**Now Playing.** Live media controls and artwork for whatever's playing, right in the notch.
-
-**AirDrop.** Drag a shareable file near the notch and a drop zone opens — only for content
-AirDrop can actually accept — and confirms the drop.
-
-**System HUDs.** Clean, Apple-style overlays for volume and brightness.
-
-**Battery alerts.** Charging and low-battery notices surface in the notch.
-
-**Focus alerts.** A heads-up whenever your Focus mode changes.
-
-**Calendar and countdown.** A next-event peek and a countdown chip for what's coming up.
-
-**Lock and unlock showcase.** A padlock animation on lock and a "welcome back" card on
-unlock, with away-time, battery, and your next event.
-
-**Guided onboarding.** A first-launch walkthrough introduces the features and requests
-Calendar and Accessibility permissions step by step, both skippable.
+| Feature | Description |
+|---|---|
+| **Now Playing** | Live media controls and artwork for whatever's playing, right in the notch. |
+| **AirDrop** | Drag a shareable file near the notch and a drop zone opens — only for content AirDrop can actually accept — and confirms the drop. |
+| **System HUDs** | Clean, Apple-style overlays for volume and brightness. |
+| **Battery alerts** | Charging and low-battery notices surface in the notch. |
+| **Focus alerts** | A heads-up whenever your Focus mode changes. |
+| **Calendar & countdown** | A next-event peek and a countdown chip for what's coming up. |
+| **Lock / unlock showcase** | A padlock animation on lock and a "welcome back" card on unlock, with away-time, battery, and your next event. |
+| **Guided onboarding** | A first-launch walkthrough introduces the features and requests Calendar and Accessibility permissions step by step, both skippable. |
 
 ---
 
 ## Gallery
 
-<!--
-  Drop screenshots/GIFs here, e.g.:
-  docs/images/gallery-now-playing.png
-  docs/images/gallery-airdrop.png
-  docs/images/gallery-calendar.png
-  docs/images/gallery-settings.png
-
-  Suggested layout once images exist:
-
-  <p align="center">
-    <img src="docs/images/gallery-now-playing.png" width="32%">
-    <img src="docs/images/gallery-airdrop.png" width="32%">
-    <img src="docs/images/gallery-calendar.png" width="32%">
-  </p>
--->
+<div align="center">
+  <img src="docs/images/banner-gallery.png" alt="NotchLand overlaying the MacBook notch" width="100%">
+</div>
 
 _More screenshots & demo GIFs coming soon — contributions welcome! Drop images into
 `docs/images/` and wire them into this section._
